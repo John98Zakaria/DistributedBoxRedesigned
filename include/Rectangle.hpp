@@ -5,7 +5,6 @@
 #ifndef DISTRIBUTEDBOXREDESIGNED_RECTANGLE_HPP
 #define DISTRIBUTEDBOXREDESIGNED_RECTANGLE_HPP
 
-#include "Coordinate2D.hpp"
 enum struct PointState {
     INSIDE = 0,
     LEFT = 1,
@@ -15,6 +14,7 @@ enum struct PointState {
 };
 
 
+#include "Coordinate2D.hpp"
 
 struct Rectangle {
     Coordinate2D top_left;
@@ -22,13 +22,13 @@ struct Rectangle {
 
     Rectangle(const Coordinate2D &topLeft, const Coordinate2D &bottomRight);
 
-    [[nodiscard]] constexpr double width() const noexcept;
+    double width() const noexcept;
 
-    [[nodiscard]] constexpr double height() const noexcept;
+    [[nodiscard]]  double height() const noexcept;
 
-    [[nodiscard]] constexpr double area() const noexcept;
+    [[nodiscard]]  double area() const noexcept;
 
-    [[nodiscard]] constexpr PointState pointState(const Coordinate2D &cord) const noexcept;
+    [[nodiscard]]  PointState pointState(const Coordinate2D &cord) const noexcept;
 };
 
 

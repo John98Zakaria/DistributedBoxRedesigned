@@ -3,7 +3,7 @@
 //
 #include <catch2/catch_test_macros.hpp>
 
-#include "Coordinate2D.hpp"
+#include "../include/Coordinate2D.hpp"
 
 TEST_CASE("Empty initialization is zero", "[Coordinate2D]") {
     Coordinate2D GEOMETRY;
@@ -26,5 +26,5 @@ TEST_CASE("Addition Works", "[Coordinate2D]") {
 TEST_CASE("Random random_coord Works", "[Coordinate2D]") {
     auto GEOMETRY = Coordinate2D::random_coord(Coordinate2D{0, 1}, Coordinate2D{0, 1});
     auto GEOMETRY1 = Coordinate2D::random_coord(Coordinate2D{0, 1}, Coordinate2D{0, 1});
-    REQUIRE(GEOMETRY!=GEOMETRY1);
+    REQUIRE(GEOMETRY != GEOMETRY1);
 }

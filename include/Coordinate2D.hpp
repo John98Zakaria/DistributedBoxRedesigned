@@ -15,16 +15,17 @@ struct Coordinate2D {
     double x{};
     double y{};
 
-    constexpr Coordinate2D operator-(const Coordinate2D &cord) const noexcept;
+    Coordinate2D operator-(const Coordinate2D &cord) const noexcept;
 
-    constexpr Coordinate2D operator+(const Coordinate2D &cord) const noexcept;
+    Coordinate2D operator+(const Coordinate2D &cord) const noexcept;
 
-    constexpr Coordinate2D &operator+=(const Coordinate2D &cord) noexcept;
+    Coordinate2D &operator+=(const Coordinate2D &cord) noexcept;
 
-    constexpr Coordinate2D &operator-=(const Coordinate2D &cord) noexcept;
+    Coordinate2D &operator-=(const Coordinate2D &cord) noexcept;
 
-    constexpr bool operator==(const Coordinate2D &cord) const noexcept;
-    constexpr bool operator!=(const Coordinate2D &cord) const noexcept;
+    bool operator==(const Coordinate2D &cord) const noexcept;
+
+    bool operator!=(const Coordinate2D &cord) const noexcept;
 
     [[nodiscard]] double norm() const noexcept;
 

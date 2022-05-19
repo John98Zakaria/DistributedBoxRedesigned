@@ -3,32 +3,32 @@
 //
 #include "Coordinate2D.hpp"
 
-constexpr Coordinate2D Coordinate2D::operator-(const Coordinate2D &cord) const noexcept {
+Coordinate2D Coordinate2D::operator-(const Coordinate2D &cord) const noexcept {
     return {cord.x - x, cord.y - y};
 }
 
-constexpr Coordinate2D Coordinate2D::operator+(const Coordinate2D &cord) const noexcept {
+Coordinate2D Coordinate2D::operator+(const Coordinate2D &cord) const noexcept {
     return {cord.x + x, cord.y + y};
 }
 
-constexpr Coordinate2D &Coordinate2D::operator+=(const Coordinate2D &cord) noexcept {
+Coordinate2D &Coordinate2D::operator+=(const Coordinate2D &cord) noexcept {
     x += cord.x;
     y += cord.y;
     return *this;
 }
 
-constexpr Coordinate2D &Coordinate2D::operator-=(const Coordinate2D &cord) noexcept {
+Coordinate2D &Coordinate2D::operator-=(const Coordinate2D &cord) noexcept {
     x -= cord.x;
     y -= cord.y;
     return *this;
 }
 
-constexpr bool Coordinate2D::operator==(const Coordinate2D &cord) const noexcept {
-    return x==cord.x && y==cord.y;
+bool Coordinate2D::operator==(const Coordinate2D &cord) const noexcept {
+    return x == cord.x && y == cord.y;
 }
 
-constexpr bool Coordinate2D::operator!=(const Coordinate2D &cord) const noexcept {
-    return !(*this==cord);
+bool Coordinate2D::operator!=(const Coordinate2D &cord) const noexcept {
+    return !(*this == cord);
 }
 
 double Coordinate2D::norm() const noexcept {

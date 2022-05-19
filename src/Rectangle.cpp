@@ -1,7 +1,7 @@
 //
 // Created by jn98zk on 5/19/22.
 //
-#include "Rectangle.hpp"
+#include "../include/Rectangle.hpp"
 
 Rectangle::Rectangle(const Coordinate2D &topLeft, const Coordinate2D &bottomRight) : top_left(topLeft),
                                                                                      bottom_right(bottomRight) {
@@ -10,20 +10,20 @@ Rectangle::Rectangle(const Coordinate2D &topLeft, const Coordinate2D &bottomRigh
     }
 }
 
-constexpr double Rectangle::width() const noexcept {
+double Rectangle::width() const noexcept {
     return bottom_right.x - top_left.x;
 
 }
 
-constexpr double Rectangle::height() const noexcept{
+double Rectangle::height() const noexcept {
     return bottom_right.y - top_left.y;
 }
 
-constexpr double Rectangle::area() const noexcept{
+double Rectangle::area() const noexcept {
     return width() * height();
 }
 
-constexpr PointState Rectangle::pointState(const Coordinate2D &cord) const noexcept {
+PointState Rectangle::pointState(const Coordinate2D &cord) const noexcept {
     if (cord.x > bottom_right.x) {
         return PointState::RIGHT;
     } else if (cord.x < top_left.x) {
