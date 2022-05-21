@@ -10,6 +10,7 @@
 #include <cstdio>
 #include <complex>
 #include <random>
+#include <spdlog/spdlog.h>
 
 struct Coordinate2D {
     double x{};
@@ -36,6 +37,12 @@ struct Coordinate2D {
     template<typename Archive>
     void serialize(Archive &ar, const unsigned int version) {
         ar & x & y;
+    }
+    template<typename OStream>
+    friend OStream &operator<<(OStream &os, const Coordinate2D &c)
+    {
+        return os << spdlog::fmt_lib::format("({:.3f},{:.3f})",c.x,c.y);
+
     }
 
 

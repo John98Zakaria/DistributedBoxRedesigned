@@ -1,10 +1,18 @@
 #include <iostream>
-#include "include/Rectangle.hpp"
+#include "MoleculeBox.hpp"
+#include "spdlog/sinks/basic_file_sink.h"
 
 int main() {
-    Rectangle rectangle({1, 2}, {4, 5});
-    auto w = rectangle.width();
 
-    std::cout << "Hello, World!" << std::endl;
+    auto logger = spdlog::basic_logger_mt("AtomLogger", "../basic-log.txt");
+    Rectangle dims({0, 0}, {5, 5});
+    Atom atom{{0, 0}, 1, {1, 0}};
+    MoleculeBox box(dims, std::vector<Atom>{atom});
+    MoleculeBox box2(dims, {Atom{{0,0},1,{0,1}}});
+    for (size_t i = 0; i < 20; ++i) {
+        box.step();
+        logger->log(spdlog::level::info,box.getAtoms()[0]);
+    }
+
     return 0;
 }

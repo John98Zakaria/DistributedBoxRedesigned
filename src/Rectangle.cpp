@@ -1,7 +1,10 @@
 //
 // Created by jn98zk on 5/19/22.
 //
-#include "../include/Rectangle.hpp"
+// This is a personal academic project. Dear PVS-Studio, please check it.
+
+#include "Rectangle.hpp"
+
 
 Rectangle::Rectangle(const Coordinate2D &topLeft, const Coordinate2D &bottomRight) : top_left(topLeft),
                                                                                      bottom_right(bottomRight) {

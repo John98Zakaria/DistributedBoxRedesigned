@@ -1,9 +1,20 @@
 cmake_minimum_required(VERSION 3.22)
 project(DistributedBoxRedesigned)
 find_package(Catch2 REQUIRED)
+include(Catch)
+include(CTest)
+function(add_catch_test target_name)
+    target_link_libraries(${target_name} PRIVATE Catch2::Catch2WithMain)
+    catch_discover_tests(${target_name})
+endfunction()
 
+add_executable(test_molecule_box test_molecule_box.cpp)
+
+add_catch_test(test_molecule_box)
+target_link_libraries(test_molecule_box PRIVATE Functional)
 add_executable(test_cooridnates test_cooridnate.cpp)
-target_link_libraries(test_cooridnates PRIVATE Catch2::Catch2WithMain GEOMETRY)
+add_catch_test(test_cooridnates)
+target_link_libraries(test_cooridnates PRIVATE GEOMETRY)
 add_executable(test_rectangle test_rectangle.cpp)
-target_link_libraries(test_rectangle PRIVATE Catch2::Catch2WithMain GEOMETRY)
-
+add_catch_test(test_rectangle)
+target_link_libraries(test_rectangle PRIVATE GEOMETRY)

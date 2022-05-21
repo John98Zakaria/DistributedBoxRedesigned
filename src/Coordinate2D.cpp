@@ -1,6 +1,9 @@
 //
 // Created by jn98zk on 5/19/22.
 //
+// This is a personal academic project. Dear PVS-Studio, please check it.
+
+
 #include "Coordinate2D.hpp"
 
 Coordinate2D Coordinate2D::operator-(const Coordinate2D &cord) const noexcept {

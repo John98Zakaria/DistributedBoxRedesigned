@@ -28,3 +28,15 @@ TEST_CASE("Can calculate dimensions", "[Rectangle]") {
     CHECK(rectangle.area() == 20);
 
 }
+
+TEST_CASE("Can get_copied", "[Rectangle]") {
+    Rectangle rectangle({1, 1}, {5, 6});
+    Rectangle rectangle_copy(rectangle);
+    CHECK(rectangle == rectangle_copy);
+    auto rectangle_copy2 = rectangle;
+
+    rectangle_copy.bottom_right.x = 6;
+    CHECK(rectangle_copy != rectangle);
+    CHECK(rectangle_copy != rectangle_copy2);
+
+}
