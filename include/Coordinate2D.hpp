@@ -38,10 +38,10 @@ struct Coordinate2D {
     void serialize(Archive &ar, const unsigned int version) {
         ar & x & y;
     }
+
     template<typename OStream>
-    friend OStream &operator<<(OStream &os, const Coordinate2D &c)
-    {
-        return os << spdlog::fmt_lib::format("({:.3f},{:.3f})",c.x,c.y);
+    friend OStream &operator<<(OStream &os, const Coordinate2D &c) {
+        return os << spdlog::fmt_lib::format("({:.3f},{:.3f})", c.x, c.y);
 
     }
 

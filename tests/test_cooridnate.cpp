@@ -28,19 +28,21 @@ TEST_CASE("Random random_coord Works", "[Coordinate2D]") {
     auto coord1 = Coordinate2D::random_coord(Coordinate2D{0, 1}, Coordinate2D{0, 1});
     REQUIRE(coord != coord1);
 }
+
 TEST_CASE("Copy Assignment Constructor works", "[Coordinate2D]") {
     auto coord = Coordinate2D::random_coord(Coordinate2D{0, 1}, Coordinate2D{0, 1});
     auto coord_Copy = coord;
-    REQUIRE(coord==coord_Copy);
+    REQUIRE(coord == coord_Copy);
     coord.y = 5;
-    REQUIRE(coord!=coord_Copy);
+    REQUIRE(coord != coord_Copy);
 
 }
+
 TEST_CASE("Copy Constructor works", "[Coordinate2D]") {
     auto coord = Coordinate2D::random_coord(Coordinate2D{0, 1}, Coordinate2D{0, 1});
     Coordinate2D coord_copy(coord);
-    REQUIRE(coord==coord_copy);
+    REQUIRE(coord == coord_copy);
     coord.y = 5;
-    REQUIRE(coord!=coord_copy);
+    REQUIRE(coord != coord_copy);
 
 }
