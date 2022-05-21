@@ -4,6 +4,7 @@
 #include <catch2/catch_test_macros.hpp>
 #include "Rectangle.hpp"
 
+using namespace Geometry;
 
 TEST_CASE("Can Detect PointState", "[Rectangle]") {
     Rectangle rectangle({0, 0}, {5, 5});

@@ -5,7 +5,7 @@
 
 #include "Rectangle.hpp"
 
-
+using namespace Geometry;
 Rectangle::Rectangle(const Coordinate2D &topLeft, const Coordinate2D &bottomRight) : top_left(topLeft),
                                                                                      bottom_right(bottomRight) {
     if (topLeft.x > bottomRight.y || topLeft.y > bottomRight.y) {

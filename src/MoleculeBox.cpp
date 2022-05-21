@@ -5,12 +5,13 @@
 // Created by jn98zk on 5/20/22.
 //
 
-
+using namespace Domain;
 void MoleculeBox::reposition_atoms() noexcept {
     std::for_each(atoms.begin(), atoms.end(), [this](Atom &atom) { reposition_atom(atom); });
 }
 
 void MoleculeBox::reposition_atom(Atom &atom) noexcept {
+    using Geometry::PointState;
     switch (dimension.pointState(atom.position)) {
         case PointState::INSIDE:
             break;

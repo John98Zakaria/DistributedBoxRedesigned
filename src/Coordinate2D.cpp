@@ -6,6 +6,8 @@
 
 #include "Coordinate2D.hpp"
 
+using namespace Geometry;
+
 Coordinate2D Coordinate2D::operator-(const Coordinate2D &cord) const noexcept {
     return {cord.x - x, cord.y - y};
 }

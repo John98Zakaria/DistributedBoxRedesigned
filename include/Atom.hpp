@@ -9,31 +9,37 @@
 #include <spdlog/spdlog.h>
 #include <spdlog/fmt/ostr.h>
 
-struct Atom {
-    Coordinate2D position;
-    std::size_t id{};
-    Coordinate2D direction;
+using Geometry::Coordinate2D;
+namespace Domain {
+    struct Atom {
 
-    void move() {
-        position += direction;
-    }
+        Coordinate2D position;
+        std::size_t id{};
+        Coordinate2D direction;
 
-    bool operator==(const Atom &rhs) const noexcept {
-        return position == rhs.position &&
-               id == rhs.id &&
-               direction == rhs.direction;
-    }
+        void move() {
+            position += direction;
+        }
 
-    bool operator!=(const Atom &rhs) const noexcept {
-        return !(rhs == *this);
-    }
+        bool operator==(const Atom &rhs) const noexcept {
+            return position == rhs.position &&
+                   id == rhs.id &&
+                   direction == rhs.direction;
+        }
 
-    template<typename OStream>
-    friend OStream &operator<<(OStream &os, const Atom &c) {
-        return os << spdlog::fmt_lib::format("Atom(id={} ,direction={} ,position={})", c.id, c.direction, c.position);
+        bool operator!=(const Atom &rhs) const noexcept {
+            return !(rhs == *this);
+        }
 
-    }
-};
+        template<typename OStream>
+        friend OStream &operator<<(OStream &os, const Atom &c) {
+            return os
+                    << spdlog::fmt_lib::format("Atom(id={} ,direction={} ,position={})", c.id, c.direction, c.position);
+
+        }
+    };
+
+}
 
 
 #endif //DISTIBUTEDBOX_ATOM_HPP

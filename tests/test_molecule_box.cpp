@@ -1,6 +1,8 @@
 #include "MoleculeBox.hpp"
 #include <catch2/catch_test_macros.hpp>
 
+using namespace Domain;
+using Geometry::Coordinate2D;
 
 TEST_CASE("Reposition Atom", "[MoleculeBox]") {
     std::vector<Atom> atoms{{{0, 0}, 1, {0, 1}}};

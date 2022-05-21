@@ -2,6 +2,9 @@
 #include "MoleculeBox.hpp"
 #include "spdlog/sinks/basic_file_sink.h"
 
+using namespace Geometry;
+using namespace Domain;
+
 int main() {
 
     auto logger = spdlog::basic_logger_mt("AtomLogger", "../basic-log.txt");

@@ -4,7 +4,7 @@
 #include <catch2/catch_test_macros.hpp>
 
 #include "Coordinate2D.hpp"
-
+using namespace Geometry;
 TEST_CASE("Empty initialization is zero", "[Coordinate2D]") {
     Coordinate2D coord;
     REQUIRE(coord.x == 0);
