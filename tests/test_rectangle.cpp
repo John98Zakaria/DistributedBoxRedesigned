@@ -22,6 +22,24 @@ TEST_CASE("Can Detect PointState", "[Rectangle]") {
 
 }
 
+
+
+TEST_CASE("Combining Point-states", "[Rectangle]") {
+    auto state = PointState::LEFT | PointState::Above;
+
+    CHECK(PointState::LEFT_ABOVE == state);
+    auto state2 = PointState::LEFT | PointState::Bellow;
+    CHECK(PointState::LEFT_BELLOW == state2);
+
+    auto state3 = PointState::RIGHT | PointState::Above;
+    CHECK(PointState::RIGHT_ABOVE == state3);
+
+    auto state4 = PointState::RIGHT | PointState::Bellow;
+    CHECK(PointState::RIGHT_BELLOW == state4);
+
+}
+
+
 TEST_CASE("Can calculate dimensions", "[Rectangle]") {
     Rectangle rectangle({1, 1}, {5, 6});
     CHECK(rectangle.width() == 4);

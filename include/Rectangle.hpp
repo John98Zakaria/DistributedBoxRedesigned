@@ -10,13 +10,34 @@
 
 
 namespace Geometry {
-    enum struct PointState {
-        INSIDE = 0,
-        LEFT = 1,
-        RIGHT = 2,
-        Bellow = 3,
-        Above = 4
+    enum class PointState : std::uint8_t {
+        NONE = 0,
+        INSIDE = 1,
+        LEFT = 2,
+        RIGHT = 4,
+        Bellow = 8,
+        Above = 16,
+
+        LEFT_ABOVE = LEFT | Above,
+        LEFT_BELLOW = LEFT | Bellow,
+        RIGHT_ABOVE = RIGHT | Above,
+        RIGHT_BELLOW = RIGHT | Bellow,
+
     };
+
+    inline PointState operator|(PointState lhs, PointState rhs) {
+        return static_cast<PointState>(
+                static_cast<std::underlying_type_t<PointState>>(lhs) |
+                static_cast<std::underlying_type_t<PointState>>(rhs)
+        );
+    }
+
+    inline PointState operator&(const PointState lhs, const PointState rhs) {
+        return static_cast<PointState>(
+                static_cast<std::underlying_type_t<PointState>>(lhs) &
+                static_cast<std::underlying_type_t<PointState>>(rhs)
+        );
+    }
 
     struct Rectangle {
         Coordinate2D top_left;
@@ -27,6 +48,7 @@ namespace Geometry {
         double width() const noexcept;
 
         [[nodiscard]]  double height() const noexcept;
+
 
         [[nodiscard]]  double area() const noexcept;
 

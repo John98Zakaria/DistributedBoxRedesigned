@@ -6,6 +6,7 @@
 #include "Rectangle.hpp"
 
 using namespace Geometry;
+
 Rectangle::Rectangle(const Coordinate2D &topLeft, const Coordinate2D &bottomRight) : top_left(topLeft),
                                                                                      bottom_right(bottomRight) {
     if (topLeft.x > bottomRight.y || topLeft.y > bottomRight.y) {
@@ -27,15 +28,20 @@ double Rectangle::area() const noexcept {
 }
 
 PointState Rectangle::pointState(const Coordinate2D &cord) const noexcept {
+    auto state = PointState::NONE;
     if (cord.x > bottom_right.x) {
-        return PointState::RIGHT;
+        state = state | PointState::RIGHT;
     } else if (cord.x < top_left.x) {
-        return PointState::LEFT;
-    } else if (cord.y > bottom_right.y) {
-        return PointState::Bellow;
-    } else if (cord.y < top_left.y) {
-        return PointState::Above;
+        state = state | PointState::LEFT;
     }
-    return PointState::INSIDE;
+    if (cord.y > bottom_right.y) {
+        state = state | PointState::Bellow;
+    } else if (cord.y < top_left.y) {
+        state = state | PointState::Above;
+    }
+    if (state == PointState::NONE) {
+        return PointState::INSIDE;
+    }
+    return state;
 }
 

@@ -3,6 +3,7 @@ project(DistributedBoxRedesigned)
 
 set(CMAKE_CXX_STANDARD 17)
 find_package(spdlog REQUIRED)
+find_package(HPX REQUIRED)
 
 add_library(GEOMETRY src/Rectangle.cpp src/Coordinate2D.cpp)
 add_library(Functional src/MoleculeBox.cpp include/MoleculeBox.hpp)

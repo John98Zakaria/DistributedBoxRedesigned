@@ -27,6 +27,25 @@ void MoleculeBox::reposition_atom(Atom &atom) noexcept {
         case PointState::Above:
             atom.position.y += dimension.width();
             break;
+        case PointState::LEFT_ABOVE:
+            atom.position.x += dimension.width();
+            atom.position.y += dimension.width();
+            break;
+        case PointState::LEFT_BELLOW:
+            atom.position.x += dimension.width();
+            atom.position.y -= dimension.height();
+
+            break;
+        case PointState::RIGHT_ABOVE:
+            atom.position.x -= dimension.width();
+            atom.position.y += dimension.width();
+            break;
+        case PointState::RIGHT_BELLOW:
+            atom.position.x -= dimension.width();
+            atom.position.y -= dimension.height();
+            break;
+        case PointState::NONE:
+            break;
     }
 }
 
