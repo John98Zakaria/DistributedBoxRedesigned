@@ -6,47 +6,13 @@
 //
 
 using namespace Domain;
+
 void MoleculeBox::reposition_atoms() noexcept {
     std::for_each(atoms.begin(), atoms.end(), [this](Atom &atom) { reposition_atom(atom); });
 }
 
 void MoleculeBox::reposition_atom(Atom &atom) noexcept {
-    using Geometry::PointState;
-    switch (dimension.pointState(atom.position)) {
-        case PointState::INSIDE:
-            break;
-        case PointState::LEFT:
-            atom.position.x += dimension.width();
-            break;
-        case PointState::RIGHT:
-            atom.position.x -= dimension.width();
-            break;
-        case PointState::Bellow:
-            atom.position.y -= dimension.height();
-            break;
-        case PointState::Above:
-            atom.position.y += dimension.width();
-            break;
-        case PointState::LEFT_ABOVE:
-            atom.position.x += dimension.width();
-            atom.position.y += dimension.width();
-            break;
-        case PointState::LEFT_BELLOW:
-            atom.position.x += dimension.width();
-            atom.position.y -= dimension.height();
-
-            break;
-        case PointState::RIGHT_ABOVE:
-            atom.position.x -= dimension.width();
-            atom.position.y += dimension.width();
-            break;
-        case PointState::RIGHT_BELLOW:
-            atom.position.x -= dimension.width();
-            atom.position.y -= dimension.height();
-            break;
-        case PointState::NONE:
-            break;
-    }
+    dimension.refit_into_container(atom.position);
 }
 
 void MoleculeBox::move_atoms() noexcept {

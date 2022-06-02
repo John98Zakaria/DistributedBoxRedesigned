@@ -62,6 +62,8 @@ namespace Geometry {
             return !((*this) == other);
         }
 
+        void refit_into_container(Coordinate2D &coordinate) const noexcept;
+
         template<typename OStream>
         friend OStream &operator<<(OStream &os, const Rectangle &c) {
             return os << spdlog::fmt_lib::format("Rectangle(top_left={},bottom_right={})", c.top_left, c.bottom_right);

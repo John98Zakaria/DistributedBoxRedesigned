@@ -14,7 +14,7 @@
 
 using Geometry::Rectangle;
 namespace Domain {
-    class MoleculeBox {
+    struct MoleculeBox {
         Rectangle dimension;
         std::vector<Atom> atoms;
     public:
@@ -31,6 +31,7 @@ namespace Domain {
         const std::vector<Atom> &getAtoms() const;
 
         void move_atoms() noexcept;
+
 
         template<typename OStream>
         friend OStream &operator<<(OStream &os, const MoleculeBox &c) {

@@ -9,7 +9,7 @@ using namespace Geometry;
 
 Rectangle::Rectangle(const Coordinate2D &topLeft, const Coordinate2D &bottomRight) : top_left(topLeft),
                                                                                      bottom_right(bottomRight) {
-    if (topLeft.x > bottomRight.y || topLeft.y > bottomRight.y) {
+    if (topLeft.x > bottomRight.x || topLeft.y > bottomRight.y) {
         throw std::runtime_error("Invalid Rectangle");
     }
 }
@@ -43,5 +43,43 @@ PointState Rectangle::pointState(const Coordinate2D &cord) const noexcept {
         return PointState::INSIDE;
     }
     return state;
+}
+
+void Rectangle::refit_into_container(Coordinate2D &coordinate) const noexcept {
+    switch (pointState(coordinate)) {
+        case PointState::INSIDE:
+            break;
+        case PointState::LEFT:
+            coordinate.x += width();
+            break;
+        case PointState::RIGHT:
+            coordinate.x -= width();
+            break;
+        case PointState::Bellow:
+            coordinate.y -= height();
+            break;
+        case PointState::Above:
+            coordinate.y += width();
+            break;
+        case PointState::LEFT_ABOVE:
+            coordinate.x += width();
+            coordinate.y += width();
+            break;
+        case PointState::LEFT_BELLOW:
+            coordinate.x += width();
+            coordinate.y -= height();
+
+            break;
+        case PointState::RIGHT_ABOVE:
+            coordinate.x -= width();
+            coordinate.y += width();
+            break;
+        case PointState::RIGHT_BELLOW:
+            coordinate.x -= width();
+            coordinate.y -= height();
+            break;
+        case PointState::NONE:
+            break;
+    }
 }
 

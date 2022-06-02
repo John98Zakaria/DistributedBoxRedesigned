@@ -47,3 +47,4 @@ Coordinate2D Coordinate2D::random_coord(const Coordinate2D &topleft, const Coord
 
     return {x_rand(dev), y_rand(dev)};
 }
+

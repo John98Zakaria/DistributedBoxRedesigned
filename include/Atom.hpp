@@ -31,11 +31,14 @@ namespace Domain {
             return !(rhs == *this);
         }
 
-        template<typename OStream>
-        friend OStream &operator<<(OStream &os, const Atom &c) {
+        friend std::ostream &operator<<(std::ostream &os, const Atom &c) {
             return os
                     << spdlog::fmt_lib::format("Atom(id={} ,direction={} ,position={})", c.id, c.direction, c.position);
+        }
 
+        template<typename Archive>
+        void serialize(Archive &ar, const unsigned int version) {
+            ar & position & id & direction;
         }
     };
 

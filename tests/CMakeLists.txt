@@ -18,3 +18,6 @@ target_link_libraries(test_cooridnates PRIVATE GEOMETRY)
 add_executable(test_rectangle test_rectangle.cpp)
 add_catch_test(test_rectangle)
 target_link_libraries(test_rectangle PRIVATE GEOMETRY)
+
+add_executable(test_prime_factors test_prime_factors.cpp)
+add_catch_test(test_prime_factors)

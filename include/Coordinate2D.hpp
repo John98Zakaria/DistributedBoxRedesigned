@@ -16,6 +16,7 @@ namespace Geometry {
         double x{};
         double y{};
 
+
         Coordinate2D operator-(const Coordinate2D &cord) const noexcept;
 
         Coordinate2D operator+(const Coordinate2D &cord) const noexcept;
@@ -39,8 +40,7 @@ namespace Geometry {
             ar & x & y;
         }
 
-        template<typename OStream>
-        friend OStream &operator<<(OStream &os, const Coordinate2D &c) {
+        friend std::ostream &operator<<(std::ostream &os, const Coordinate2D &c) {
             return os << spdlog::fmt_lib::format("({:.3f},{:.3f})", c.x, c.y);
 
         }
