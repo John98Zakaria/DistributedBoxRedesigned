@@ -21,3 +21,7 @@ target_link_libraries(test_rectangle PRIVATE GEOMETRY)
 
 add_executable(test_prime_factors test_prime_factors.cpp)
 add_catch_test(test_prime_factors)
+
+add_executable(test_cubic_neighbour test_cubic_neighbour.cpp)
+target_link_libraries(test_cubic_neighbour PRIVATE GEOMETRY spdlog::spdlog)
+add_catch_test(test_cubic_neighbour)
