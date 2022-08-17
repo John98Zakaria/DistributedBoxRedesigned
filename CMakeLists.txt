@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 20)
 find_package(spdlog REQUIRED)
 find_package(HPX REQUIRED)
 
-add_library(GEOMETRY src/Rectangle.cpp src/Coordinate2D.cpp src/PeriodicNeighbourCalculator.cpp)
+add_library(GEOMETRY src/Rectangle.cpp src/Coordinate2D.cpp src/PeriodicNeighbourCalculator.cpp src/CuboidNeighbourCalc.cpp)
 add_library(Functional src/MoleculeBox.cpp include/MoleculeBox.hpp)
 set_target_properties(GEOMETRY PROPERTIES LINKER_LANGUAGE CXX)
 target_include_directories(GEOMETRY PUBLIC include)

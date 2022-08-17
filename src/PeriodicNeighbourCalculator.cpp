@@ -25,13 +25,9 @@ std::size_t PeriodicNeighbourCalculator::flatten_coordinate(const PeriodicNeighb
     return position.z * (nodeGridSize.x * nodeGridSize.y) + position.x + position.y * nodeGridSize.x;
 }
 
-std::size_t PeriodicNeighbourCalculator::positive_mod_wrapp(long amount) const noexcept {
-    return (((int) my_rank + amount) % (int) num_ranks + num_ranks) % num_ranks;
-}
 
-std::size_t PeriodicNeighbourCalculator::positive_mod_wrapp(std::size_t amount) const noexcept {
-    return positive_mod_wrapp((long int) amount);
-}
+
+
 
 PeriodicNeighbourCalculator::position_type
 PeriodicNeighbourCalculator::wrap_around_add(PeriodicNeighbourCalculator::position_type direction) const noexcept {

@@ -25,3 +25,7 @@ add_catch_test(test_prime_factors)
 add_executable(test_cubic_neighbour test_cubic_neighbour.cpp)
 target_link_libraries(test_cubic_neighbour PRIVATE GEOMETRY spdlog::spdlog)
 add_catch_test(test_cubic_neighbour)
+
+add_executable(test_cuboid_calcs test_cuboid_calcs.cpp)
+target_link_libraries(test_cuboid_calcs PRIVATE GEOMETRY)
+add_catch_test(test_cuboid_calcs)
