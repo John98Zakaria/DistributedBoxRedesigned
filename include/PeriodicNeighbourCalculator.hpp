@@ -65,6 +65,78 @@ namespace Geometry {
                                                                          NeighbourRelation::BELLOW_CENTER_RIGHT_UP,
                                                                          NeighbourRelation::BELLOW_CENTER_RIGHT_DOWN};
 
+    constexpr static  NeighbourRelation opposite_neighbour(const NeighbourRelation neighbour){
+        switch (neighbour) {
+            case PLANE_CENTER_LEFT:
+                return PLANE_CENTER_RIGHT;
+            case PLANE_CENTER_RIGHT:
+                return PLANE_CENTER_LEFT;
+            case PLANE_CENTER_UP:
+                return PLANE_CENTER_DOWN;
+            case PLANE_CENTER_DOWN:
+                return PLANE_CENTER_UP;
+            case PLANE_CENTER_LEFT_UP:
+                return PLANE_CENTER_RIGHT_DOWN;
+            case PLANE_CENTER_LEFT_DOWN:
+                return PLANE_CENTER_RIGHT_UP;
+            case PLANE_CENTER_RIGHT_UP:
+                return PLANE_CENTER_LEFT_DOWN;
+            case PLANE_CENTER_RIGHT_DOWN:
+                return PLANE_CENTER_LEFT_UP;
+            case ABOVE_CENTER_LEFT:
+                return BELLOW_CENTER_RIGHT;
+            case ABOVE_CENTER_RIGHT:
+                return BELLOW_CENTER_LEFT;
+            case ABOVE_CENTER_UP:
+                return BELLOW_CENTER_DOWN;
+            case ABOVE_CENTER:
+                return BELLOW_CENTER;
+            case ABOVE_CENTER_DOWN:
+                return BELLOW_CENTER_UP;
+            case ABOVE_CENTER_LEFT_UP:
+                return BELLOW_CENTER_RIGHT_DOWN;
+            case ABOVE_CENTER_LEFT_DOWN:
+                return BELLOW_CENTER_RIGHT_UP;
+            case ABOVE_CENTER_RIGHT_UP:
+                return BELLOW_CENTER_LEFT_DOWN;
+            case ABOVE_CENTER_RIGHT_DOWN:
+                return BELLOW_CENTER_LEFT_UP;
+            case BELLOW_CENTER_LEFT:
+                return ABOVE_CENTER_RIGHT;
+            case BELLOW_CENTER_RIGHT:
+                return ABOVE_CENTER_LEFT;
+            case BELLOW_CENTER_UP:
+                return ABOVE_CENTER_DOWN;
+            case BELLOW_CENTER:
+                return ABOVE_CENTER;
+            case BELLOW_CENTER_DOWN:
+                return ABOVE_CENTER_UP;
+            case BELLOW_CENTER_LEFT_UP:
+                return ABOVE_CENTER_RIGHT_DOWN;
+            case BELLOW_CENTER_LEFT_DOWN:
+                return ABOVE_CENTER_RIGHT_UP;
+            case BELLOW_CENTER_RIGHT_UP:
+                return ABOVE_CENTER_LEFT_DOWN;
+            case BELLOW_CENTER_RIGHT_DOWN:
+                return ABOVE_CENTER_LEFT_UP;
+        }
+        return static_cast<NeighbourRelation>(-1); // This won't happen, but if it does, it shall explode;
+    }
+
+
+    static constexpr std::array<NeighbourRelation,26> make_opposite_neighbour_iterable(){
+        std::array<NeighbourRelation,26> periodic_neighbour{};
+        for (const auto &neighbour: NeighbourEnumIterable) {
+            periodic_neighbour[neighbour] = opposite_neighbour(neighbour);
+        }
+        return periodic_neighbour;
+    }
+
+
+    constexpr std::array<NeighbourRelation,26> periodic_neighbour = make_opposite_neighbour_iterable();
+
+
+
     class PeriodicNeighbourCalculator {
     public:
         using position_type = Coordinate3D<std::size_t>;
@@ -78,9 +150,7 @@ namespace Geometry {
         static std::size_t
         flatten_coordinate(const position_type &position, const position_type &nodeGridSize) noexcept;
 
-        std::size_t positive_mod_wrapp(long int amount) const noexcept;
 
-        std::size_t positive_mod_wrapp(std::size_t amount) const noexcept;
 
         static constexpr std::size_t positive_mod(long int number, long int amount, long int base) noexcept {
             return ((number + amount) % base + base) % base;
@@ -160,6 +230,7 @@ namespace Geometry {
         position_type node_grid_size{};
         position_type my_position{};
         std::array<std::size_t, 26> neighbour_index{};
+
 
 
     };
